@@ -32,8 +32,6 @@
     "lodash.values": "^4.3.0",
     "mongodb": "^3.4.0",
     "mongoose": "^5.8.1",
-    "nightmare": "^3.0.2",
-    "puppeteer": "^2.0.0",
     "request": "^2.88.0",
     "webpack-dev-server": "^3.9.0"
   }
