@@ -1,6 +1,6 @@
 const request = require('request');
-const Nightmare = require('nightmare');
-const nightmare = Nightmare({ show: true });
+//const Nightmare = require('nightmare');
+//const nightmare = Nightmare({ show: true });
 const Sneaker = require('../models/Sneaker');
 
 module.exports = {
@@ -26,6 +26,7 @@ module.exports = {
                             flightClub: 'https://www.flightclub.com/catalogsearch/result/?q=' + json.Products[i].styleId
                         }
                     });
+                    shoe.save();
                     products.push(shoe);
                     
                 }
