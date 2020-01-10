@@ -1,13 +1,16 @@
 module.exports = (app) => {
-    const sneaks = require('../controllers/sneaks.controllers.js/index.js');
+    const sneaks = require('../controllers/sneaks.controllers.js');
 
-    // Create a new Note
-   // app.post('/notes', sneaks.create);
+  
+   // app.post('/search/shoe', sneaks.create);
 
-    // Retrieve a single Note with noteId
+
     app.get('/search/shoe', sneaks.findOneWithSize);
+
+    //grabs the most popular sneakers 
+    app.get('/home', sneaks.getMostPopular)
     
-    // Retrieve all Notes
+   
     app.get('/search/:shoe', sneaks.create);
 
     app.get('/shoes', sneaks.findAll);

@@ -69,6 +69,20 @@ exports.findAll = (req, res) => {
 
 };
 
+
+exports.getMostPopular = (req, res) => {
+  stockXScraper.getProducts("", options, function(error, products){
+    if(error){
+     res.send("Product Not Found");
+   }
+   else{ 
+     res.send(products);
+   }
+ });
+
+
+};
+
 /* // Update a note identified by the noteId in the request
 exports.update = (req, res) => {
 
