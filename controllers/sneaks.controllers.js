@@ -8,7 +8,7 @@ var options = {
       'User-Agent': 'comp'
     }
   };
-// Create and Save a new Note
+// Create and Save a new sneaker
 exports.create = async function(req, res) {
     if(!req.params) {
         return res.status(400).send({
@@ -25,7 +25,7 @@ exports.create = async function(req, res) {
      });
 
 };
- // Retrieve and return all notes from the database.
+ // Retrieve and return all sneaker from the database.
 /* exports.findAll = (req, res) => {
 
 };
@@ -83,12 +83,12 @@ exports.getMostPopular = (req, res) => {
 
 };
 
-/* // Update a note identified by the noteId in the request
+/* // Update a sneaker identified by the sneaker in the request
 exports.update = (req, res) => {
 
 };
 
-// Delete a note with the specified noteId in the request
+// Delete a sneaker with the specified noteId in the request
 exports.delete = (req, res) => {
 
 };  */
