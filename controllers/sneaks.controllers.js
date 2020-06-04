@@ -9,7 +9,6 @@ var options = {
       'User-Agent': 'comp'
     }
   };
-
 exports.create = async function(req, res) {
     if(!req.params) {
         return res.status(400).send({
@@ -110,7 +109,7 @@ exports.update = (req, res) => {
 
 };
 
-// Delete a note with the specified noteId in the request
+// Delete a sneaker with the specified noteId in the request
 exports.delete = (req, res) => {
 
 };  */

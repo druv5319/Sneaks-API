@@ -1,6 +1,6 @@
 const request = require('request');
-/* const Nightmare = require('nightmare');
-const nightmare = Nightmare({ show: true }); */
+const Nightmare = require('nightmare');
+const nightmare = Nightmare({ show: true }); 
 const cheerio = require('cheerio');
 const Sneaker = require('../models/Sneaker');
 
@@ -10,7 +10,7 @@ module.exports = {
 
         request(options, async function (error, response, data) {
                                  
-/*                
+               
             const SGLink = await nightmare
             .goto('https://www.stadiumgoods.com/catalogsearch/result/?q='+ styleId)
             .wait('.item')
@@ -24,7 +24,7 @@ module.exports = {
             }); 
             await nightmare.end();
             return SGLink; 
-             */
+             
         });
 
     }
