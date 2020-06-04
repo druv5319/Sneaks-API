@@ -1,7 +1,6 @@
 const request = require('request');
-//const Nightmare = require('nightmare');
-//const nightmare = Nightmare({ show: true });
 const Sneaker = require('../models/Sneaker');
+const flightClubScraper = require('../scrapers/flightclub-scraper')
 
 module.exports = {
       getProducts: function(shoe, options, callback) {
@@ -10,7 +9,12 @@ module.exports = {
             if (!error) {
                 var json = JSON.parse(data);
                 var products = [];
+                var numOfShoes = json.Products.length;
                 for (var i = 0; i < json.Products.length; i++) {
+                    if(!json.Products[i].styleId || (json.Products[i].styleId).indexOf(' ') >= 0){
+                        numOfShoes--;
+                        continue;
+                    }
                     var shoe = new Sneaker({
                         shoeName: json.Products[i].title,
                         brand: json.Products[i].brand,
@@ -23,27 +27,43 @@ module.exports = {
                             stockX: 'https://stockx.com/' + json.Products[i].urlKey,
                             stadiumGoods: 'https://www.stadiumgoods.com/catalogsearch/result/?q='+ json.Products[i].styleId,
                             goat: 'https://www.goat.com/search?query=' + json.Products[i].styleId,
-                            flightClub: 'https://www.flightclub.com/catalogsearch/result/?q=' + json.Products[i].styleId
+                            flightClub:  ''
                         }
                     });
-                    shoe.save();
-                    products.push(shoe);
-                    
-                }
                 
+                    products.push(shoe)
+                }
+                if(products.length == 0) callback(new Error('Product Not Found'))
 
-          console.log(products);
-                if(products.length == 0){
-                    callback(new Error('Product Not Found'));
-                    
-                }
-                else{
-                callback(null, products);
-                }
-                            
+                // Grabs links for each shoe. This function runs asynchronously thus a simple counter is needed to see
+                //  if all shoes links have been grabbed before returning products to the callback
+                var count = 0
+                products.forEach(function(shoe){
+                    getAllProductInfo(shoe, function(){
+                        Sneaker.countDocuments({styleID: shoe.styleID}, function(err, count){
+                            if(count<=0){
+                                shoe.save()
+                            }
+                        });
+                       
+                        //if all shoes links have been parsed then return
+                        if(count++ + 1 == products.length)  callback(null, products); 
+                    });
+
+                })
             }
-           
-
         });
     }
 }
+
+  
+
+function getAllProductInfo(shoe, callback){
+    flightClubScraper.getProductInfo(shoe, function(){
+        callback()
+    });
+
+}
+
+
+

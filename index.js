@@ -15,6 +15,7 @@ var options = {
 };
 mongoose.Promise = global.Promise;
 
+
 // Connecting to the database
 mongoose.connect(dbConfig.url, {
 }).then(() => {
@@ -23,7 +24,6 @@ mongoose.connect(dbConfig.url, {
     console.log('Could not connect to the database', err);
     process.exit();
 });
-
 
 app.listen('8080');
 console.log('API is running on http://localhost:8080');
