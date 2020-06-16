@@ -4,8 +4,11 @@ module.exports = (app) => {
   
    // app.post('/search/shoe', sneaks.create);
  
-    //Grabs a sneaker with urls to all resell sites and lowest price given the style ID (can be found when searching a sneaker using the /search/:shoe route)
-    app.get('/id/:id', sneaks.findOneWithSize);
+    //Grabs sneaker info from the database given the styleID
+    app.get('/id/:id', sneaks.findOne);
+
+    //Grabs price maps from each site of a particular shoe
+    app.get('/id/:id/prices', sneaks.findOneWithPrices);
 
     //grabs the most popular sneakers 
     app.get('/home', sneaks.getMostPopular)

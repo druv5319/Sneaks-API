@@ -23,6 +23,12 @@ var SneakerSchema = new Schema({
         stadiumGoods: Number,
         goat: Number,
         flightClub: Number
+    },
+    resellPrices:{
+        stockX: {},
+        goat: {},
+        stadiumGoods: {},
+        flightClub: {}
     }
 
 });

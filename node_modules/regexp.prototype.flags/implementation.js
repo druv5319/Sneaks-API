@@ -1,11 +1,11 @@
 'use strict';
 
-var toObject = Object;
-var TypeErr = TypeError;
+var $Object = Object;
+var $TypeError = TypeError;
 
 module.exports = function flags() {
-	if (this != null && this !== toObject(this)) {
-		throw new TypeErr('RegExp.prototype.flags getter called on non-object');
+	if (this != null && this !== $Object(this)) {
+		throw new $TypeError('RegExp.prototype.flags getter called on non-object');
 	}
 	var result = '';
 	if (this.global) {

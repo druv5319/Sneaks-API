@@ -1,3 +1,16 @@
+1.3.0 / 2019-12-14
+=================
+  * [New] add `auto` entry point
+  * [Refactor] use `callBind` helper from `es-abstract`
+  * [Deps] update `define-properties`
+  * [meta] add `funding` field
+  * [Dev Deps] update `eslint`, `@ljharb/eslint-config`, `covert`, `has`, `tape`
+  * [Tests] use shared travis-ci configs
+  * [Tests] use `eclint` instead of `editorconfig-tools`
+  * [Tests] remove `jscs`
+  * [Tests] use `npx aud` instead of `nsp` or `npm audit` with hoops
+  * [actions] add automatic rebasing / merge commit blocking
+
 1.2.0 / 2017-10-24
 =================
   * [New] add support for `dotAll` regex flag.

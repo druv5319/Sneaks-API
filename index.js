@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
-//const Nightmare = require('nightmare');
-//const nightmare = Nightmare({ show: true })
+const Sneaker = require('./models/Sneaker');
 const dbConfig = require('./config/database.config.js');
 const mongoose = require('mongoose');
 require('./routes/sneaks.routes.js')(app);
@@ -14,6 +13,10 @@ var options = {
   }
 };
 mongoose.Promise = global.Promise;
+/*Sneaker.deleteMany({ }, function (err) {
+  if(err) console.log(err);
+  console.log("Successful deletion");
+});*/
 
 
 // Connecting to the database
