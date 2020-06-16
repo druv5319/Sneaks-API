@@ -8,7 +8,7 @@ module.exports = {
     getLink: function(styleID, callback){
         options.url = 'https://www.stadiumgoods.com/catalogsearch/result/?q='+ styleID;
 
-        request(options, async function (error, response, data) {
+    /*    request(options, async function (error, response, data) {
                                  
                
             const SGLink = await nightmare
@@ -25,7 +25,7 @@ module.exports = {
             await nightmare.end();
             return SGLink; 
              
-        });
+        });*/
 
     }
 }
