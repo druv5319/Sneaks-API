@@ -18,6 +18,5 @@ Sneaks API is a web scraper built using Node.JS, Express, and Request. Sneaks AP
   - Mongoose
   
 ### TODO
-  - Grab prices from Goat, and Flight Club
   - Deploy and host the Node.JS app
   
