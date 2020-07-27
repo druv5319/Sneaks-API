@@ -3,12 +3,18 @@ module.exports = (app) => {
 
   
    // app.post('/search/shoe', sneaks.create);
+
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
  
     //Grabs sneaker info from the database given the styleID
     app.get('/id/:id', sneaks.findOne);
 
     //Grabs price maps from each site of a particular shoe
-    app.get('/id/:id/prices', sneaks.findOneWithPrices);
+    app.get('/id/:id/prices', sneaks.getProductPrices);
 
     //grabs the most popular sneakers 
     app.get('/home', sneaks.getMostPopular)

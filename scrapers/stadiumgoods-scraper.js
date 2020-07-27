@@ -26,10 +26,12 @@ module.exports = {
         var data = '{"operationId":"sg-front/cached-a41eba558ae6325f072164477a24d3c2","variables":{"initialSearchQuery":"' + shoe.styleID + '","initialSort":"RELEVANCE","filteringOnCategory":false,"filteringOnBrand":false,"filteringOnMensSizes":false,"filteringOnKidsSizes":false,"filteringOnWomensSizes":false,"filteringOnApparelSizes":false,"filteringOnGender":false,"filteringOnColor":false,"filteringOnPriceRange":false},"locale":"USA_USD"}'
         axios.post(options.url, data, config).then(response => {
                 if (response.data.data.configurableProducts.edges[0]) {
+                
                     shoe.resellLinks.stadiumGoods = response.data.data.configurableProducts.edges[0].node.pdpUrl;
+                    shoe.lowestResellPrice.stadiumGoods = Number(response.data.data.configurableProducts.edges[0].node.lowestPrice.value.formattedValue.replace(/[^0-9.-]+/g, ""));
                     callback();
                 } else {
-                  
+
                     callback(new Error("Product '" + shoe.styleID + "' not found on Stadium Goods'"));
                 }
             })
@@ -60,8 +62,7 @@ module.exports = {
                         const $ = cheerio.load(data);
                         $('.product-sizes__input').map(function (i, product) {
                             if ($(product).attr('data-stock') == 'true') {
-
-                                priceMap[$(product).attr('data-size')] = parseInt($(product).attr('data-amount'))
+                                priceMap[$(product).attr('data-size')] = parseInt($(product).attr('data-amount')) / 100;
                             }
                             if (i == $('.product-sizes__input').length - 1) {
                                 shoe.resellPrices.stadiumGoods = priceMap;

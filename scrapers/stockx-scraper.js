@@ -9,33 +9,40 @@ var options = {
     }
 };
 module.exports = {
-    getProductsAndInfo: function (shoe, callback) {
-        options.url = 'https://stockx.com/api/browse?productCategory=sneakers&_search=' + shoe + '&dataType=product&country=US';
-        request(options,  function (error, response, data) {
+    getProductsAndInfo: function (key, callback) {
+        options.body = '{"params":"query='+key+'&facets=*&filters="}'
+        options.url = 'https://xw7sbct9v6-1.algolianet.com/1/indexes/products/query?x-algolia-agent=Algolia%20for%20vanilla%20JavaScript%203.32.1&x-algolia-application-id=XW7SBCT9V6&x-algolia-api-key=6bfb5abee4dcd8cea8f0ca1ca085c2b3';
+        request.post(options, 
+            function (error, response, data) {
             if (!error) {
                 var json = JSON.parse(data);
                 var products = [];
-                var numOfShoes = json.Products.length;
-                for (var i = 0; i < json.Products.length; i++) {
-                    if (!json.Products[i].styleId || (json.Products[i].styleId).indexOf(' ') >= 0) {
+                var numOfShoes = json.hits.length;
+                for (var i = 0; i < json.hits.length; i++) {
+                    if (!json.hits[i].style_id || (json.hits[i].style_id).indexOf(' ') >= 0) {
                         numOfShoes--;
                         continue;
                     }
                     var shoe = new Sneaker({
-                        shoeName: json.Products[i].title,
-                        brand: json.Products[i].brand,
-                        silhoutte: json.Products[i].shoe,
-                        styleID: json.Products[i].styleId,
-                        retailPrice: json.Products[i].retailPrice,
-                        imageLinks: json.Products[i].media.imageUrl,
-                        urlKey: json.Products[i].urlKey,
+                        shoeName: json.hits[i].name,
+                        brand: json.hits[i].brand,
+                        silhoutte: json.hits[i].make,
+                        styleID: json.hits[i].style_id,
+                        retailPrice: json.hits[i].retailPrice,
+                        thumbnail: json.hits[i].media.imageUrl,
+                        releaseDate: json.hits[i].release_date,
+                        description: json.hits[i].description,
+                        urlKey: json.hits[i].url,
                         resellLinks: {
-                            stockX: 'https://stockx.com/' + json.Products[i].urlKey
+                            stockX: 'https://stockx.com/' + json.hits[i].url
+                        },
+                        lowestResellPrice:{
+                            stockX: json.hits[i].lowest_ask
                         }
                     });
-
                     products.push(shoe)
                 }
+             
                 if (products.length == 0) {
                     callback(new Error('Product Not Found'), null);
                 } else {
@@ -65,7 +72,7 @@ module.exports = {
                     Object.keys(json.Product.children).forEach(function (key) {
                         if (json.Product.children[key].market.lowestAsk == 0) return;
 
-                        priceMap[json.Product.children[key].shoeSize] = json.Product.children[key].market.lowestAsk * 100;
+                        priceMap[json.Product.children[key].shoeSize] = json.Product.children[key].market.lowestAsk;
                     });
                     shoe.resellPrices.stockX = priceMap;
                     callback();

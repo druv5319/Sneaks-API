@@ -1,5 +1,4 @@
 const Sneaker = require('../models/Sneaker');
-const request = require('request');
 const stockXScraper = require('../scrapers/stockx-scraper');
 const flightClubScraper = require('../scrapers/flightclub-scraper');
 const goatScraper = require('../scrapers/goat-scraper');
@@ -36,12 +35,8 @@ exports.create = async function (req, res) {
   });
 };
 
-
-
-exports.findOneWithPrices = (req, res) => {
+exports.getProductPrices = (req, res) => {
   let shoeID = req.params.id;
-
-
   Sneaker.findOne({
     styleID: shoeID
   }, function (err, shoe) {
@@ -49,39 +44,45 @@ exports.findOneWithPrices = (req, res) => {
       console.log(new Error("Sneaker not found in database"));
       getProducts(shoeID);
     }
- 
-
-
-   console.time('StockX Price')
+    console.time('async')
+    var cbCounter = 0;
     stockXScraper.getPrices(shoe, function () {
-      console.timeEnd('StockX Price')
-      console.time('SG Price')
-      stadiumGoodsScraper.getPrices(shoe, function () {
-        console.timeEnd('SG Price')
-        console.time('FC Price')
-        
-      
-        flightClubScraper.getPrices(shoe, function () {
-          console.timeEnd('FC Price')
-          console.time('Goat Price')
-          
+      cbCounter++;
+      if (cbCounter == 4) {
+        console.log("FINISHED GRABBING SNEAKERS")
+        console.timeEnd('async')
+        res.json(shoe);
+      }
 
-          goatScraper.getPrices(shoe, function () {
-            console.timeEnd('Goat Price')
+    });
+    stadiumGoodsScraper.getPrices(shoe, function () {
+      cbCounter++;
+      if (cbCounter == 4) {
+        console.log("FINISHED GRABBING SNEAKERS")
+        console.timeEnd('async')
+        res.json(shoe);
+      }
 
+    });
+    flightClubScraper.getPrices(shoe, function () {
+      cbCounter++;
+      if (cbCounter == 4) {
+        console.log("FINISHED GRABBING SNEAKERS")
+        console.timeEnd('async')
+        res.json(shoe);
+      }
 
-            res.json(shoe);
+    });
+    goatScraper.getPrices(shoe, function () {
+      cbCounter++;
+      if (cbCounter == 4) {
+        console.log("FINISHED GRABBING SNEAKERS")
+        console.timeEnd('async')
+        res.json(shoe);
+      }
 
-          });
-        });
-      });
     });
 
-  });
-
-  Sneaker.find({
-    styleID: shoeID
-  }).then(sneaks => {
   });
 };
 
@@ -99,77 +100,83 @@ exports.findAll = (req, res) => {
 
 
 exports.getMostPopular = (req, res) => {
-
-  stockXScraper.getProductsAndInfo("", function (error, products) {
+  getProducts("", function (error, products) {
     if (error) {
       res.send("Product Not Found");
     } else {
-      
-      res.send(products);
+      res.json(products);
     }
   });
 
 
 };
 
-var findSneakerById = function (sneakerId, done) {
-  Sneaker.find({
-    styleID: sneakerId
-  }, (err, data) => {
-    if (err) return done(err)
-    return done(null, data)
-  })
-
-};
-
-
 
 var getProducts = function (keyword, callback) {
-  var ct = 0;
-  console.time('stockX')
+  var productCounter = 0;
+ 
   stockXScraper.getProductsAndInfo(keyword, function (error, products) {
-console.timeEnd('stockX')
-console.time('total')
+    console.time('total')
     products.forEach(function (shoe) {
-   
-      flightClubScraper.getLink(shoe, function () {
+      var cbCounter = 0;
+     
        
-        goatScraper.getLink(shoe, function () {
-
-          stadiumGoodsScraper.getLink(shoe, function (err) {
-           
-            if (err) {
-              // console.log(err);
+      flightClubScraper.getLink(shoe, function () {
+        if(++cbCounter == 3){
+          Sneaker.countDocuments({
+            styleID: shoe.styleID
+          }, function (err, count) {
+            if (count <= 0) {
+              shoe.save()
             }
-            
-          
-
-
+            //if all shoes links have been parsed then return
+            if (productCounter++ + 1 == products.length) {
+              callback(null, products);
+            }
+          });
+        }
+      });
+      stadiumGoodsScraper.getLink(shoe, function () {
+        if(++cbCounter == 3){
+          Sneaker.countDocuments({
+            styleID: shoe.styleID
+          }, function (err, count) {
+            if (count <= 0) {
+              shoe.save()
+            }
+            //if all shoes links have been parsed then return
+            if (productCounter++ + 1 == products.length) {
+              callback(null, products);
+            }
+          });
+        }
+      });
+      goatScraper.getLink(shoe, function (){
+        goatScraper.getPictures(shoe, function () {
+          if(++cbCounter == 3){
             Sneaker.countDocuments({
               styleID: shoe.styleID
             }, function (err, count) {
-
               if (count <= 0) {
                 shoe.save()
               }
-
               //if all shoes links have been parsed then return
-              if (ct++ + 1 == products.length){ 
-                console.timeEnd('total')
-                callback(null, products);}
-
+              if (productCounter++ + 1 == products.length) {
+                callback(null, products);
+              }
             });
-
-          });
-
+          }
         });
-
 
       });
 
+
     });
-    
+
   });
 
 
+
 }
+
+

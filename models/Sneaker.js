@@ -8,8 +8,10 @@ var SneakerSchema = new Schema({
     silhoutte: String,
     styleID: String, 
     retailPrice: Number,
+    releaseDate: String,
     description_html: String,
     imageLinks: [String],
+    thumbnail: String,
     urlKey: String,
     resellLinks:{
         stockX: String,
