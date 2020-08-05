@@ -30,6 +30,7 @@
     "core-util-is": "^1.0.2",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "got": "^11.5.1",
     "lodash": "^4.17.15",
     "lodash.values": "^4.3.0",
     "longjohn": "^0.2.12",
