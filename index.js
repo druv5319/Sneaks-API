@@ -1,8 +1,8 @@
-const express = require('express');
-const app = express();
+//const express = require('express');
+//const app = express();
 const dbConfig = require('./config/database.config.js');
 const mongoose = require('mongoose');
-require('./routes/sneaks.routes.js')(app);
+//require('./routes/sneaks.routes.js')(app);
 const SneaksAPI = require('./controllers/sneaks.controllers.js');
 
 mongoose.Promise = global.Promise;
@@ -19,7 +19,7 @@ mongoose.connect(dbConfig.url, {}).then(() => {
   process.exit();
 });
 
-app.listen('8080');
-console.log('API is running on http://localhost:8080');
-module.exports = app;
+//app.listen('8080');
+//console.log('API is running on http://localhost:8080');
+//module.exports = app;
 module.exports = SneaksAPI;
