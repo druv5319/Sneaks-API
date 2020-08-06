@@ -4,7 +4,8 @@
   "description": "A RESTful API that collects and returns data on sneakers. This API will also find, compare and return a link of where to buy the sneaker based on the price.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -12,13 +13,17 @@
   },
   "keywords": [
     "sneakers",
+    "shoes",
+    "goat",
+    "stadium goods",
+    "flight club",
     "stockx",
     "restful",
     "api",
     "nodejs"
   ],
   "author": "druv5319@gmail.com",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/druv5319/Sneaks-API/issues"
   },

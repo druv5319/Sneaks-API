@@ -53,7 +53,7 @@ module.exports = (app) => {
               }
         })
     });
-
+//Grabs all sneakers in the database
     app.get('/shoes', function(req, res){
         sneaks.findAll( function(error, products){
             if (error) {
