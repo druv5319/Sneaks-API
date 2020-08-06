@@ -4,6 +4,7 @@ const dbConfig = require('./config/database.config.js');
 const mongoose = require('mongoose');
 require('./routes/sneaks.routes.js')(app);
 const SneaksAPI = require('./controllers/sneaks.controllers.js');
+var port = process.env.PORT || 3000;
 
 mongoose.Promise = global.Promise;
 /*Sneaker.deleteMany({ }, function (err) {
@@ -19,7 +20,9 @@ mongoose.connect(dbConfig.url, {}).then(() => {
   process.exit();
 });
 
-app.listen('8080');
-console.log('API is running on http://localhost:8080');
+app.listen(port, function () {
+  console.log(`Sneaks app listening on port `, port);
+ });
+
 module.exports = app;
 module.exports = SneaksAPI;
