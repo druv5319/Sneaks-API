@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const dbConfig = require('./config/database.config.js');
 const mongoose = require('mongoose');
-const cors = require("cors");
 require('./routes/sneaks.routes.js')(app);
 const SneaksAPI = require('./controllers/sneaks.controllers.js');
 
