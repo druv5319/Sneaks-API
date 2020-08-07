@@ -1,6 +1,7 @@
 # Sneaks API
 ![version](https://img.shields.io/npm/v/sneaks-api "Version")
 ![npm](https://img.shields.io/npm/dt/sneaks-api.svg "Total Downloads")
+
 A StockX API, FlightClub API, Goat API, and Stadium Goods API all in one.
 
 Sneaks API is a web scraper built using Node.JS, Express, and Axios. Sneaks API allows users to get essential sneaker content such as images, links of purchase and even prices from resell sites while also collecting data and storing it within a database. This API mainly scrapes StockX for sneaker information and then asynchronously scrapes Stadium Goods, Goat, and Flight Club for additional sneaker information such as images and its respective resell price. This API outputs a sneaker object of the following variables:
@@ -39,7 +40,7 @@ Once installed, use this line on the terminal within your project directory
 npm install sneaks-api
 ```
 and place this line at the top of your main file
-```
+```js
 const SneaksAPI = require('sneaks-api');
 ```
 ### How to Use
