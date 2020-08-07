@@ -46,7 +46,31 @@ and place this line at the top of your main file
 const SneaksAPI = require('sneaks-api');
 ```
 ### How to Use
-#### Method #1: Using localhost:3000
+#### Method #1: Using the SneaksAPI class
+```js
+const SneaksAPI = require('sneaks-api');
+const sneaks = new SneaksAPI();
+
+//getProducts(keyword, callback) takes in a keyword and returns an array of products
+sneaks.getProducts("Yeezy Cinder", function(err, products){
+    console.log(products)
+})
+
+//Product object includes styleID where you input it in the getProductPrices function
+//getProductPrices(styleID, callback) takes in a style ID and returns sneaker info including a price map and more images of the product
+sneaks.getProductPrices("FY2903", function(err, product){
+    console.log(product)
+})
+//getMostPopular(callback) returns an array of the current popular products curated by StockX
+sneaks.getMostPopular(function(err, products){
+    console.log(products)
+})
+```
+[Console log](https://github.com/druv5319/Sneaks-API/blob/master/Screenshots/exampleSearchScreenshot%231.png) of sneaks.getProducts("Yeezy Cinder", ...)
+[Console log](https://github.com/druv5319/Sneaks-API/blob/master/Screenshots/exampleSearchScreenshot%232.png) of sneaks.getProductPrices("FY2903", ...)
+
+#### Method #2: Using localhost:3000
+Once your program starts with the sneaks-api module imported, a server should start and listen on port 3000
 ## License
 The Sneaks API is MIT Licensed.
 
