@@ -46,7 +46,7 @@ and place this line at the top of your main file
 const SneaksAPI = require('sneaks-api');
 ```
 ## How to Use
-#### Method #1: Using the SneaksAPI class
+### Method #1: Using the SneaksAPI class
 ```js
 const SneaksAPI = require('sneaks-api');
 const sneaks = new SneaksAPI();
@@ -69,7 +69,7 @@ sneaks.getMostPopular(function(err, products){
 [Console log](https://github.com/druv5319/Sneaks-API/blob/master/Screenshots/exampleSearchScreenshot%231.png) of sneaks.getProducts("Yeezy Cinder", ...)           
 [Console log](https://github.com/druv5319/Sneaks-API/blob/master/Screenshots/exampleSearchScreenshot%232.png) of sneaks.getProductPrices("FY2903", ...)
 
-#### Method #2: Using localhost:3000
+### Method #2: Using localhost:3000
 Once your program starts with the sneaks-api module imported, a server should start and listen on port 3000
 
 <b>Routes:</b>
