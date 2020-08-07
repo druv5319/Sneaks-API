@@ -72,7 +72,9 @@ sneaks.getMostPopular(function(err, products){
 
 #### Method #2: Using localhost:3000
 Once your program starts with the sneaks-api module imported, a server should start and listen on port 3000
+
 <b>Routes:</b>
+
 This route takes in a keyword and returns an array of products (getProducts(keyword))
 ```
 GET localhost:3000/search/:keyword
