@@ -47,4 +47,8 @@ const SneaksAPI = require('sneaks-api');
 ```
 ### How to Use
 #### Method #1: Using localhost:3000
+## License
+The Sneaks API is MIT Licensed.
+
+MIT © [druv5319](https://github.com/druv5319)
   
