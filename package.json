@@ -42,5 +42,6 @@
     "mongodb": "^3.4.0",
     "mongoose": "^5.8.1",
     "request": "^2.88.0"
-  }
+  },
+  "devDependencies": {}
 }
