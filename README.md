@@ -67,10 +67,28 @@ sneaks.getMostPopular(function(err, products){
 })
 ```
 [Console log](https://github.com/druv5319/Sneaks-API/blob/master/Screenshots/exampleSearchScreenshot%231.png) of sneaks.getProducts("Yeezy Cinder", ...)
+
 [Console log](https://github.com/druv5319/Sneaks-API/blob/master/Screenshots/exampleSearchScreenshot%232.png) of sneaks.getProductPrices("FY2903", ...)
 
 #### Method #2: Using localhost:3000
 Once your program starts with the sneaks-api module imported, a server should start and listen on port 3000
+<b>Routes:</b>
+This route takes in a keyword and returns an array of products (getProducts(keyword))
+```
+GET localhost:3000/search/:keyword
+```
+
+This route takes in a style ID and returns sneaker info including a price map and more images of the product (getProductprices(styleID))
+```
+GET localhost:3000/id/:styleID/prices
+```
+
+This route returns an array of the current popular products curated by StockX (getMostPopular())
+```
+GET localhost:3000/home
+```
+
+
 ## License
 The Sneaks API is MIT Licensed.
 
