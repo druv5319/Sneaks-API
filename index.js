@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-const dbConfig = require('./config/database.config.js');
 const mongoose = require('mongoose');
 require('./routes/sneaks.routes.js')(app);
 require('dotenv').config();
