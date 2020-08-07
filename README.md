@@ -45,7 +45,7 @@ and place this line at the top of your main file
 ```js
 const SneaksAPI = require('sneaks-api');
 ```
-### How to Use
+## How to Use
 #### Method #1: Using the SneaksAPI class
 ```js
 const SneaksAPI = require('sneaks-api');
