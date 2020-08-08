@@ -21,7 +21,7 @@ Sneaks API is a web scraper built using Node.JS, Express, and Axios. Sneaks API 
   
 Feel free to fork, edit and submit a pull request for this API for any changes or improvements. If you have any questions or issues regarding this feel free to create an issue and I will try to answer them as soon as I can.
   
-## Screenshots
+
 
 ## Technologies Used
   - Node.JS
