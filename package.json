@@ -8,7 +8,7 @@
     "start": "node index.js"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+    "registry": "https://npm.pkg.github.com/druv5319"
   },
   "repository": {
     "type": "git",
