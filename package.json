@@ -32,7 +32,6 @@
   },
   "homepage": "https://github.com/druv5319/Sneaks-API#readme",
   "dependencies": {
-    "after-load": "^1.0.4",
     "axios": "^0.19.2",
     "cheerio": "^1.0.0-rc.3",
     "core-util-is": "^1.0.2",
@@ -40,8 +39,6 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "got": "^11.5.1",
-    "lodash.values": "^4.3.0",
-    "longjohn": "^0.2.12",
     "mongodb": "^3.4.0",
     "mongoose": "^5.8.1",
     "request": "^2.88.0"
