@@ -19,7 +19,7 @@ Sneaks API is a sneaker API built using Node.JS, Express, and Axios. The Sneaks 
   - Price map (of shoe size to price) from each of the resell sites
   - And more
 
-I built this API so sneaker heads and developers are able to create sneaker based programs and websites without having to fumble with scrapping information on all 4 resell websites. Feel free to fork, edit and submit a pull request for this API for any changes or improvements. If you have any questions or issues regarding this feel free to create an issue and I will try to answer them as soon as I can.
+I built this API so sneaker heads and developers are able to create sneaker based programs, trackers and websites without having to fumble with scrapping information on all 4 resell websites. Feel free to fork, edit and submit a pull request for this API for any changes or improvements. If you have any questions or issues regarding this feel free to create an issue and I will try to answer them as soon as I can.
   
 
 
