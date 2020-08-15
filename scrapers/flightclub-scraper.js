@@ -53,7 +53,6 @@ module.exports = {
                     http2: true
                 });
                 var token = response.body;
-                console.log(token)
                 let priceMap = {};
                 try {
                     const response = await got.post('https://www.flightclub.com/graphql', {
@@ -68,7 +67,6 @@ module.exports = {
                       http2: true,
                     });
                     var json = JSON.parse(response.body);
-                    console.log(json)
                     for (var i = 0; i < json.data.getProductTemplate.newSizes.length; i++) {
                         priceMap[json.data.getProductTemplate.newSizes[i].size.display] = json.data.getProductTemplate.newSizes[i].lowestPriceOption.price.value / 100;
                     }

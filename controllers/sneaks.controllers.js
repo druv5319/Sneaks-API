@@ -136,7 +136,10 @@ module.exports = class Sneaks {
       styleID: shoeID
     }, function (err, shoe) {
       if (!shoe || err) {
-        console.log(new Error("Sneaker not found in database"));
+        if(err){console.log(err)}
+        if(!shoe){
+          console.log(new Error("Sneaker not found in database"));
+        }
         getProducts(shoeID, function (error, products) {
           if (error) {
             console.log(new Error("No Products Found"));

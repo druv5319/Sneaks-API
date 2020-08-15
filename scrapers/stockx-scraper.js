@@ -89,6 +89,7 @@ module.exports = {
             shoe.resellPrices.stockX = priceMap;
             callback();
         } catch (error) {
+            console.log(error)
             let err = new Error("Could not connect to StockX while searching '", shoe.styleID, "' Error: ", error)
             console.log(err);
             callback(err)
