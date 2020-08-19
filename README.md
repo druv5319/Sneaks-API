@@ -7,10 +7,11 @@
   
 <p align="center">
   
-   <a href="https://github.com/badges/shields/graphs/contributors" alt="Version">
+   <a href="https://www.npmjs.com/package/sneaks-api" alt="Version">
         <img src="https://img.shields.io/npm/v/sneaks-api" /></a>
-![version](https://img.shields.io/npm/v/sneaks-api "Version")
-![npm](https://img.shields.io/npm/dt/sneaks-api.svg "Total Downloads")
+<a href="https://www.npmjs.com/package/sneaks-api" alt="Downloads">
+        <img src="https://img.shields.io/npm/dt/sneaks-api.svg " /></a>
+
 
  </p>
 
