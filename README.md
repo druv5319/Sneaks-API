@@ -10,7 +10,7 @@
    <a href="https://www.npmjs.com/package/sneaks-api" alt="Version">
         <img src="https://img.shields.io/npm/v/sneaks-api" /></a>
 <a href="https://www.npmjs.com/package/sneaks-api" alt="Downloads">
-        <img src="https://img.shields.io/npm/dt/sneaks-api.svg " /></a>
+        <img src="https://img.shields.io/npm/dt/sneaks-api " /></a>
 
 
  </p>
