@@ -1,11 +1,16 @@
 # Sneaks API
 <p align="center">
-<img src="https://github.com/druv5319/Sneaks-API/blob/master/Screenshots/Sneaks_Logo.png" width=150 align=left>
+  
+<img src="https://github.com/druv5319/Sneaks-API/blob/master/Screenshots/Sneaks_Logo.png" width=150>
+  
   </p>
+  
 <p align="center">
+  
 ![version](https://img.shields.io/npm/v/sneaks-api "Version")
 ![npm](https://img.shields.io/npm/dt/sneaks-api.svg "Total Downloads")
-  </p>
+
+ </p>
 
 A StockX API, FlightClub API, Goat API, and Stadium Goods API all in one.
 
