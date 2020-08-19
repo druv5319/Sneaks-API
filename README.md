@@ -1,4 +1,5 @@
 # Sneaks API
+<img src="https://github.com/druv5319/Sneaks-API/blob/master/Screenshots/Sneaks_Logo.png" width=300 align=left>
 ![version](https://img.shields.io/npm/v/sneaks-api "Version")
 ![npm](https://img.shields.io/npm/dt/sneaks-api.svg "Total Downloads")
 
