@@ -1,12 +1,14 @@
-# Sneaks API
+
 <p align="center">
   
-<img src="https://github.com/druv5319/Sneaks-API/blob/master/Screenshots/Sneaks_Logo.png" width=150>
+<img src="https://github.com/druv5319/Sneaks-API/blob/master/Screenshots/Sneaks_Logo.png" width=250>
   
   </p>
   
 <p align="center">
   
+   <a href="https://github.com/badges/shields/graphs/contributors" alt="Version">
+        <img src="https://img.shields.io/npm/v/sneaks-api" /></a>
 ![version](https://img.shields.io/npm/v/sneaks-api "Version")
 ![npm](https://img.shields.io/npm/dt/sneaks-api.svg "Total Downloads")
 
