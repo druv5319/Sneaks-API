@@ -1,7 +1,7 @@
 
 <p align="center">
   
-<img src="hhttps://github.com/druv5319/Sneaks-API/blob/master/Screenshots/Sneaks_Logo.png?raw=true" width=250>
+<img src="https://github.com/druv5319/Sneaks-API/blob/master/Screenshots/Sneaks_Logo.png?raw=true" width=250>
   
   </p>
   
