@@ -1,6 +1,19 @@
-# Sneaks API
-![version](https://img.shields.io/npm/v/sneaks-api "Version")
-![npm](https://img.shields.io/npm/dt/sneaks-api.svg "Total Downloads")
+
+<p align="center">
+  
+<img src="https://github.com/druv5319/Sneaks-API/blob/master/Screenshots/Sneaks_Logo.png" width=250>
+  
+  </p>
+  
+<p align="center">
+  
+   <a href="https://www.npmjs.com/package/sneaks-api" alt="Version">
+        <img src="https://img.shields.io/npm/v/sneaks-api" /></a>
+<a href="https://www.npmjs.com/package/sneaks-api" alt="Downloads">
+        <img src="https://img.shields.io/npm/dt/sneaks-api " /></a>
+
+
+ </p>
 
 A StockX API, FlightClub API, Goat API, and Stadium Goods API all in one.
 
@@ -19,7 +32,7 @@ Sneaks API is a sneaker API built using Node.JS, Express, and Axios. The Sneaks 
   - Price map (of shoe size to price) from each of the resell sites
   - And more
 
-I built this API so sneaker heads and developers are able to create sneaker based programs and websites without having to fumble with scrapping information on all 4 resell websites. Feel free to fork, edit and submit a pull request for this API for any changes or improvements. If you have any questions or issues regarding this feel free to create an issue and I will try to answer them as soon as I can.
+I built this API so sneaker heads and developers are able to create sneaker based programs, trackers and websites without having to fumble with scrapping information on all 4 resell websites. Feel free to fork, edit and submit a pull request for this API for any changes or improvements. If you have any questions or issues regarding this feel free to create an issue and I will try to answer them as soon as I can.
   
 
 
@@ -89,9 +102,3 @@ This route returns an array of the current popular products curated by StockX (g
 GET localhost:3000/home
 ```
 
-
-## License
-The Sneaks API is MIT Licensed.
-
-MIT © [druv5319](https://github.com/druv5319)
-  
