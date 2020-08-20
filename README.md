@@ -102,9 +102,3 @@ This route returns an array of the current popular products curated by StockX (g
 GET localhost:3000/home
 ```
 
-
-## License
-The Sneaks API is MIT Licensed.
-
-MIT © [druv5319](https://github.com/druv5319)
-  
