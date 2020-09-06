@@ -54,7 +54,6 @@ module.exports = class Sneaks {
 
         stadiumGoodsScraper.getLink(shoe, function () {
           if (++cbCounter == 3) {
-
             //if all shoes links have been parsed then return
             if (productCounter++ + 1 == products.length) {
               callback(null, products);
