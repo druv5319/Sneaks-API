@@ -6,43 +6,52 @@
 
 const MongooseError = require('./');
 
-/**
- * Schema validator error
- *
- * @param {Object} properties
- * @inherits MongooseError
- * @api private
- */
 
-function ValidatorError(properties) {
-  let msg = properties.message;
-  if (!msg) {
-    msg = MongooseError.messages.general.default;
+class ValidatorError extends MongooseError {
+  /**
+   * Schema validator error
+   *
+   * @param {Object} properties
+   * @api private
+   */
+  constructor(properties) {
+    let msg = properties.message;
+    if (!msg) {
+      msg = MongooseError.messages.general.default;
+    }
+
+    const message = formatMessage(msg, properties);
+    super(message);
+
+    properties = Object.assign({}, properties, { message: message });
+    this.properties = properties;
+    this.kind = properties.type;
+    this.path = properties.path;
+    this.value = properties.value;
+    this.reason = properties.reason;
   }
 
-  const message = this.formatMessage(msg, properties);
-  MongooseError.call(this, message);
-
-  properties = Object.assign({}, properties, { message: message });
-  this.name = 'ValidatorError';
-  if (Error.captureStackTrace) {
-    Error.captureStackTrace(this);
-  } else {
-    this.stack = new Error().stack;
+  /*!
+   * toString helper
+   * TODO remove? This defaults to `${this.name}: ${this.message}`
+   */
+  toString() {
+    return this.message;
   }
-  this.properties = properties;
-  this.kind = properties.type;
-  this.path = properties.path;
-  this.value = properties.value;
-  this.reason = properties.reason;
+
+  /*!
+   * Ensure `name` and `message` show up in toJSON output re: gh-9296
+   */
+
+  toJSON() {
+    return Object.assign({ name: this.name, message: this.message }, this);
+  }
 }
 
-/*!
- * Inherits from MongooseError
- */
 
-ValidatorError.prototype = Object.create(MongooseError.prototype);
-ValidatorError.prototype.constructor = MongooseError;
+Object.defineProperty(ValidatorError.prototype, 'name', {
+  value: 'ValidatorError'
+});
 
 /*!
  * The object used to define this validator. Not enumerable to hide
@@ -55,32 +64,28 @@ Object.defineProperty(ValidatorError.prototype, 'properties', {
   value: null
 });
 
+// Exposed for testing
+ValidatorError.prototype.formatMessage = formatMessage;
+
 /*!
  * Formats error messages
  */
 
-ValidatorError.prototype.formatMessage = function(msg, properties) {
+function formatMessage(msg, properties) {
   if (typeof msg === 'function') {
     return msg(properties);
   }
+
   const propertyNames = Object.keys(properties);
-  for (let i = 0; i < propertyNames.length; ++i) {
-    const propertyName = propertyNames[i];
+  for (const propertyName of propertyNames) {
     if (propertyName === 'message') {
       continue;
     }
     msg = msg.replace('{' + propertyName.toUpperCase() + '}', properties[propertyName]);
   }
+
   return msg;
-};
-
-/*!
- * toString helper
- */
-
-ValidatorError.prototype.toString = function() {
-  return this.message;
-};
+}
 
 /*!
  * exports

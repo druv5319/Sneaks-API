@@ -1,3 +1,7 @@
+0.7.0 / 2020-03-24
+==================
+ * BREAKING CHANGE: remove `component.json` #9 [AlexeyGrigorievBoost](https://github.com/AlexeyGrigorievBoost)
+
 0.6.0 / 2019-05-01
 ==================
  * feat: support setting dotted paths within nested arrays

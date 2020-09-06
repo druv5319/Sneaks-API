@@ -1,6 +1,6 @@
 'use strict';
 
-const utils = require('../utils');
+const clone = require('../helpers/clone');
 
 /**
  * The options defined on a schematype.
@@ -19,7 +19,7 @@ class SchemaTypeOptions {
     if (obj == null) {
       return this;
     }
-    Object.assign(this, utils.clone(obj));
+    Object.assign(this, clone(obj));
   }
 }
 
@@ -199,5 +199,34 @@ Object.defineProperty(SchemaTypeOptions.prototype, 'sparse', opts);
  */
 
 Object.defineProperty(SchemaTypeOptions.prototype, 'text', opts);
+
+/**
+ * Define a transform function for this individual schema type.
+ * Only called when calling `toJSON()` or `toObject()`.
+ *
+ * ####Example:
+ *
+ *     const schema = Schema({
+ *       myDate: {
+ *         type: Date,
+ *         transform: v => v.getFullYear()
+ *       }
+ *     });
+ *     const Model = mongoose.model('Test', schema);
+ *
+ *     const doc = new Model({ myDate: new Date('2019/06/01') });
+ *     doc.myDate instanceof Date; // true
+ *
+ *     const res = doc.toObject({ transform: true });
+ *     res.myDate; // 2019
+ *
+ * @api public
+ * @property transform
+ * @memberOf SchemaTypeOptions
+ * @type Function
+ * @instance
+ */
+
+Object.defineProperty(SchemaTypeOptions.prototype, 'transform', opts);
 
 module.exports = SchemaTypeOptions;

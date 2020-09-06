@@ -84,7 +84,7 @@ class CoreDocumentArray extends CoreMongooseArray {
     // non-objects are to be interpreted as _id
     if (Buffer.isBuffer(value) ||
         value instanceof ObjectId || !utils.isObject(value)) {
-      value = {_id: value};
+      value = { _id: value };
     }
 
     if (value &&
@@ -135,25 +135,26 @@ class CoreDocumentArray extends CoreMongooseArray {
       casted = null;
     }
 
-    for (let i = 0, l = this.length; i < l; i++) {
-      if (!this[i]) {
+    for (const val of this) {
+      if (!val) {
         continue;
       }
-      _id = this[i].get('_id');
+
+      _id = val.get('_id');
 
       if (_id === null || typeof _id === 'undefined') {
         continue;
       } else if (_id instanceof Document) {
         sid || (sid = String(id));
         if (sid == _id._id) {
-          return this[i];
+          return val;
         }
       } else if (!(id instanceof ObjectId) && !(_id instanceof ObjectId)) {
-        if (utils.deepEqual(id, _id)) {
-          return this[i];
+        if (id == _id || utils.deepEqual(id, _id)) {
+          return val;
         }
       } else if (casted == _id) {
-        return this[i];
+        return val;
       }
     }
 

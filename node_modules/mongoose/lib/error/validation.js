@@ -4,62 +4,58 @@
 
 'use strict';
 
-const MongooseError = require('./');
+const MongooseError = require('./mongooseError');
 const util = require('util');
 
-/**
- * Document Validation Error
- *
- * @api private
- * @param {Document} instance
- * @inherits MongooseError
- */
+class ValidationError extends MongooseError {
+  /**
+   * Document Validation Error
+   *
+   * @api private
+   * @param {Document} [instance]
+   * @inherits MongooseError
+   */
+  constructor(instance) {
+    let _message;
+    if (instance && instance.constructor.name === 'model') {
+      _message = instance.constructor.modelName + ' validation failed';
+    } else {
+      _message = 'Validation failed';
+    }
 
-function ValidationError(instance) {
-  this.errors = {};
-  this._message = '';
+    super(_message);
 
-  MongooseError.call(this, this._message);
-  if (instance && instance.constructor.name === 'model') {
-    this._message = instance.constructor.modelName + ' validation failed';
-  } else {
-    this._message = 'Validation failed';
+    this.errors = {};
+    this._message = _message;
+
+    if (instance) {
+      instance.errors = this.errors;
+    }
   }
-  this.name = 'ValidationError';
 
-  if (Error.captureStackTrace) {
-    Error.captureStackTrace(this);
-  } else {
-    this.stack = new Error().stack;
+  /**
+   * Console.log helper
+   */
+  toString() {
+    return this.name + ': ' + _generateMessage(this);
   }
 
-  if (instance) {
-    instance.errors = this.errors;
+  /*!
+   * inspect helper
+   */
+  inspect() {
+    return Object.assign(new Error(this.message), this);
+  }
+
+  /*!
+  * add message
+  */
+  addError(path, error) {
+    this.errors[path] = error;
+    this.message = this._message + ': ' + _generateMessage(this);
   }
 }
 
-/*!
- * Inherits from MongooseError.
- */
-
-ValidationError.prototype = Object.create(MongooseError.prototype);
-ValidationError.prototype.constructor = MongooseError;
-
-/**
- * Console.log helper
- */
-
-ValidationError.prototype.toString = function() {
-  return this.name + ': ' + _generateMessage(this);
-};
-
-/*!
- * inspect helper
- */
-
-ValidationError.prototype.inspect = function() {
-  return Object.assign(new Error(this.message), this);
-};
 
 if (util.inspect.custom) {
   /*!
@@ -72,19 +68,19 @@ if (util.inspect.custom) {
 /*!
  * Helper for JSON.stringify
  */
+Object.defineProperty(ValidationError.prototype, 'toJSON', {
+  enumerable: false,
+  writable: false,
+  configurable: true,
+  value: function() {
+    return Object.assign({}, this, { message: this.message });
+  }
+});
 
-ValidationError.prototype.toJSON = function() {
-  return Object.assign({}, this, { message: this.message });
-};
 
-/*!
- * add message
- */
-
-ValidationError.prototype.addError = function(path, error) {
-  this.errors[path] = error;
-  this.message = this._message + ': ' + _generateMessage(this);
-};
+Object.defineProperty(ValidationError.prototype, 'name', {
+  value: 'ValidationError'
+});
 
 /*!
  * ignore
@@ -111,4 +107,4 @@ function _generateMessage(err) {
  * Module exports
  */
 
-module.exports = exports = ValidationError;
+module.exports = ValidationError;

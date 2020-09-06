@@ -1,6 +1,8 @@
 'use strict';
 
+const leanPopulateMap = require('./leanPopulateMap');
 const modelSymbol = require('../symbols').modelSymbol;
+const utils = require('../../utils');
 
 module.exports = assignRawDocsToIdStructure;
 
@@ -54,8 +56,14 @@ function assignRawDocsToIdStructure(rawIds, resultDocs, resultOrder, options, re
 
     doc = resultDocs[sid];
     // If user wants separate copies of same doc, use this option
-    if (options.clone) {
-      doc = doc.constructor.hydrate(doc._doc);
+    if (options.clone && doc != null) {
+      if (options.lean) {
+        const _model = leanPopulateMap.get(doc);
+        doc = utils.clone(doc);
+        leanPopulateMap.set(doc, _model);
+      } else {
+        doc = doc.constructor.hydrate(doc._doc);
+      }
     }
 
     if (recursed) {

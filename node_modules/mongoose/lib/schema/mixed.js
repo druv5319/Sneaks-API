@@ -6,7 +6,7 @@
 
 const SchemaType = require('../schematype');
 const symbols = require('./symbols');
-const utils = require('../utils');
+const isObject = require('../helpers/isObject');
 
 /**
  * Mixed SchemaType constructor.
@@ -23,7 +23,7 @@ function Mixed(path, options) {
     if (Array.isArray(def) && def.length === 0) {
       // make sure empty array defaults are handled
       options.default = Array;
-    } else if (!options.shared && utils.isObject(def) && Object.keys(def).length === 0) {
+    } else if (!options.shared && isObject(def) && Object.keys(def).length === 0) {
       // prevent odd "shared" objects between documents
       options.default = function() {
         return {};
@@ -43,6 +43,8 @@ function Mixed(path, options) {
  * @api public
  */
 Mixed.schemaName = 'Mixed';
+
+Mixed.defaultOptions = {};
 
 /*!
  * Inherits from SchemaType.
@@ -69,6 +71,27 @@ Mixed.prototype.constructor = Mixed;
  */
 
 Mixed.get = SchemaType.get;
+
+/**
+ * Sets a default option for all Mixed instances.
+ *
+ * ####Example:
+ *
+ *     // Make all mixed instances have `required` of true by default.
+ *     mongoose.Schema.Mixed.set('required', true);
+ *
+ *     const User = mongoose.model('User', new Schema({ test: mongoose.Mixed }));
+ *     new User({ }).validateSync().errors.test.message; // Path `test` is required.
+ *
+ * @param {String} option - The option you'd like to set the value for
+ * @param {*} value - value for option
+ * @return {undefined}
+ * @function set
+ * @static
+ * @api public
+ */
+
+Mixed.set = SchemaType.set;
 
 /**
  * Casts `val` for Mixed.

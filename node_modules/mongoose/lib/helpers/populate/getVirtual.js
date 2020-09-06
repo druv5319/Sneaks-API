@@ -10,6 +10,7 @@ function getVirtual(schema, name) {
   if (schema.virtuals[name]) {
     return { virtual: schema.virtuals[name], path: void 0 };
   }
+
   const parts = name.split('.');
   let cur = '';
   let nestedSchemaPath = '';
@@ -34,7 +35,7 @@ function getVirtual(schema, name) {
         if (i === parts.length - 2) {
           return {
             virtual: schema.virtuals[rest],
-            nestedSchemaPath:[nestedSchemaPath, cur].filter(v => !!v).join('.')
+            nestedSchemaPath: [nestedSchemaPath, cur].filter(v => !!v).join('.')
           };
         }
         continue;
@@ -57,6 +58,13 @@ function getVirtual(schema, name) {
       nestedSchemaPath += (nestedSchemaPath.length > 0 ? '.' : '') + cur;
       cur = '';
       continue;
+    }
+
+    if (schema.discriminators) {
+      for (const discriminatorKey of Object.keys(schema.discriminators)) {
+        const virtualFromDiscriminator = getVirtual(schema.discriminators[discriminatorKey], name);
+        if (virtualFromDiscriminator) return virtualFromDiscriminator;
+      }
     }
 
     return null;
