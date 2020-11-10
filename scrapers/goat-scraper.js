@@ -59,7 +59,6 @@ module.exports = {
         callback()
       } catch (error) {
         console.log(error);
-        console.log(response);
         let err = new Error("Could not connect to Goat while searching '" + shoe.styleID + "' Error: ", error)
         console.log(err);
         callback(err)
