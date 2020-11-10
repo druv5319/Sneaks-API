@@ -33,6 +33,7 @@ module.exports = {
     } else {
       let apiLink = shoe.resellLinks.goat.replace('sneakers/', 'web-api/v1/product_variants?productTemplateId=');
       let priceMap = {};
+      console.log("breakpoint 1");
       try {
         const response = await got(apiLink, {
           headers: {
@@ -41,6 +42,7 @@ module.exports = {
           },
           http2: true,
         });
+        console.log("breakpoint 2");
         var json = JSON.parse(response.body);
         for (var i = 0; i < json.length; i++) {
           if(json[i].shoeCondition == 'used') continue;
@@ -56,6 +58,8 @@ module.exports = {
         shoe.resellPrices.goat = priceMap;
         callback()
       } catch (error) {
+        console.log(error);
+        console.log(response);
         let err = new Error("Could not connect to Goat while searching '" + shoe.styleID + "' Error: ", error)
         console.log(err);
         callback(err)
