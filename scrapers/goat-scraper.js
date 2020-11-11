@@ -1,6 +1,8 @@
 const got = require('got');
-const tunnel = require('tunnel');
 const request = require('request');
+var HttpsProxyAgent = require('https-proxy-agent');
+var proxy = process.env.QUOTAGUARDSTATIC_URL;
+var agent = new HttpsProxyAgent(proxy);
 
 
 module.exports = {
@@ -43,7 +45,8 @@ module.exports = {
         headers: {
           'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Safari/605.1.15',
           'Content-Type': 'application/json'
-        }
+        },
+        agent: agent,
     };
     function callback(error, response, body) {
       console.log(error);
@@ -53,7 +56,11 @@ module.exports = {
       }
   }
   
-  request(options, callback);
+  request(options, function(error, response, body) {
+    console.log("Error" + error);
+    console.log("Response: " + response);
+    console.log("Body: " + body);
+  });
 
 
 
