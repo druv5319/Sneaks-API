@@ -33,7 +33,7 @@ module.exports = {
     if (!shoe.resellLinks.goat) {
       callback()
     } else {
-      let apiLink = shoe.resellLinks.goat.replace('sneakers/', 'web-api/v1/product_variants?productTemplateId=');
+      let apiLink = 'http://ip.jsontest.com'; //shoe.resellLinks.goat.replace('sneakers/', 'web-api/v1/product_variants?productTemplateId=');
       let priceMap = {};
       console.log(process.env.QUOTAGUARD_URL);
 
