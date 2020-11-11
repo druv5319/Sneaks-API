@@ -34,7 +34,32 @@ module.exports = {
     } else {
       let apiLink = shoe.resellLinks.goat.replace('sneakers/', 'web-api/v1/product_variants?productTemplateId=');
       let priceMap = {};
-      try {
+
+
+      var options = {
+        //proxy: process.env.QUOTAGUARD_URL,
+        url: apiLink,
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Safari/605.1.15',
+          'Content-Type': 'application/json'
+        }
+    };
+    function callback(error, response, body) {
+      if (!error && response.statusCode == 200) {
+          console.log(body);
+      }
+  }
+  
+  request(options, callback);
+
+
+
+
+
+
+
+
+      /*try {
         const response = await got(apiLink, {	
           headers: {
             'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Safari/605.1.15',
@@ -65,11 +90,11 @@ module.exports = {
         shoe.resellPrices.goat = priceMap;
         callback()
       } catch (error) {
-        console.log(error.response);
+        console.log(error);
         let err = new Error("Could not connect to Goat while searching '" + shoe.styleID + "' Error: ", error)
         console.log(err);
         callback(err)
-      }
+      }*/
     }
   },
 
