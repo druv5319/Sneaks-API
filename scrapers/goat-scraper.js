@@ -33,13 +33,13 @@ module.exports = {
     if (!shoe.resellLinks.goat) {
       callback()
     } else {
-      let apiLink = 'http://ip.jsontest.com'; //shoe.resellLinks.goat.replace('sneakers/', 'web-api/v1/product_variants?productTemplateId=');
+      let apiLink = shoe.resellLinks.goat.replace('sneakers/', 'web-api/v1/product_variants?productTemplateId=');
       let priceMap = {};
-      console.log(process.env.QUOTAGUARD_URL);
+      console.log(process.env.FIXIE_URL);
 
 
       var options = {
-        proxy: process.env.QUOTAGUARD_URL,
+        proxy: process.env.FIXIE_URL,
         url: apiLink,
         headers: {
           'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Safari/605.1.15',
