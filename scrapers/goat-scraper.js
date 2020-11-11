@@ -1,8 +1,6 @@
 const got = require('got');
 const request = require('request');
-var HttpsProxyAgent = require('https-proxy-agent');
-var proxy = process.env.QUOTAGUARDSTATIC_URL;
-var agent = new HttpsProxyAgent(proxy);
+
 
 
 module.exports = {
@@ -21,7 +19,7 @@ module.exports = {
         if (json.results[0].hits[0].lowest_price_cents_usd / 100 != 0) {
           shoe.lowestResellPrice.goat = json.results[0].hits[0].lowest_price_cents_usd / 100;
         }
-        shoe.resellLinks.goat = 'https://www.goat.com/sneakers/' + json.results[0].hits[0].slug;
+        shoe.resellLinks.goat = 'http://www.goat.com/sneakers/' + json.results[0].hits[0].slug;
       }
       callback();
     } catch (error) {
@@ -37,24 +35,17 @@ module.exports = {
     } else {
       let apiLink = shoe.resellLinks.goat.replace('sneakers/', 'web-api/v1/product_variants?productTemplateId=');
       let priceMap = {};
+      console.log(process.env.QUOTAGUARD_URL);
 
 
       var options = {
-        //proxy: process.env.QUOTAGUARD_URL,
+        proxy: process.env.QUOTAGUARD_URL,
         url: apiLink,
         headers: {
           'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Safari/605.1.15',
           'Content-Type': 'application/json'
-        },
-        agent: agent,
+        }
     };
-    function callback(error, response, body) {
-      console.log(error);
-      console.log(response)
-      if (!error && response.statusCode == 200) {
-          console.log(body);
-      }
-  }
   
   request(options, function(error, response, body) {
     console.log("Error" + error);
