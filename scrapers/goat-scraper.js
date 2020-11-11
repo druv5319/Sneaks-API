@@ -57,7 +57,7 @@ module.exports = {
         shoe.resellPrices.goat = priceMap;
         callback()
       } catch (error) {
-        console.log(error);
+        console.log(error.response);
         let err = new Error("Could not connect to Goat while searching '" + shoe.styleID + "' Error: ", error)
         console.log(err);
         callback(err)
