@@ -46,6 +46,8 @@ module.exports = {
         }
     };
     function callback(error, response, body) {
+      console.log(error);
+      console.log(response)
       if (!error && response.statusCode == 200) {
           console.log(body);
       }
