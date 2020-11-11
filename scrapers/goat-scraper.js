@@ -35,32 +35,8 @@ module.exports = {
     } else {
       let apiLink = shoe.resellLinks.goat.replace('sneakers/', 'web-api/v1/product_variants?productTemplateId=');
       let priceMap = {};
-      console.log(process.env.FIXIE_URL);
 
-
-      var options = {
-        proxy: process.env.FIXIE_URL,
-        url: apiLink,
-        headers: {
-          'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Safari/605.1.15',
-          'Content-Type': 'application/json'
-        }
-    };
-  
-  request(options, function(error, response, body) {
-    console.log("Error" + error);
-    console.log("Response: " + response);
-    console.log("Body: " + body);
-  });
-
-
-
-
-
-
-
-
-      /*try {
+      try {
         const response = await got(apiLink, {	
           headers: {
             'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Safari/605.1.15',
@@ -72,9 +48,9 @@ module.exports = {
                 host: process.env.QUOTAGUARD_URL
               }
             })
-          }
+          },
           
-          //http2: true,
+          http2: true,
         });
         var json = JSON.parse(response.body);
         for (var i = 0; i < json.length; i++) {
@@ -95,7 +71,7 @@ module.exports = {
         let err = new Error("Could not connect to Goat while searching '" + shoe.styleID + "' Error: ", error)
         console.log(err);
         callback(err)
-      }*/
+      }
     }
   },
 
@@ -110,8 +86,8 @@ module.exports = {
             'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.4 Safari/605.1.15',
             'Content-Type': 'application/json',
             'Host': 'www.goat.com'
-          }
-          //http2: true,
+          },
+          http2: true,
         });
         var json = JSON.parse(response.body);
         if (json.productTemplateExternalPictures) {
