@@ -1,4 +1,5 @@
 const got = require('got');
+const tunnel = require('tunnel');
 
 
 module.exports = {
@@ -41,6 +42,14 @@ module.exports = {
             'Host': 'www.goat.com',
             'Referer': shoe.resellLinks.goat,
             'X-CSRF-TOKEN': 'KCxxVmiF-L78HAegrBwd4FW1OcC9I8aXYdlk'
+            
+          },
+          agent: {
+            https: tunnel.httpsOverHttp({
+              proxy: {
+                host: 'localhost'
+              }
+            })
           }
           //http2: true,
         });
