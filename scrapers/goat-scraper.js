@@ -40,14 +40,7 @@ module.exports = {
         const response = await got(apiLink, {	
           headers: {
             'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Safari/605.1.15',
-            'Content-Type': 'application/json'
-          },
-          agent: {
-            https: tunnel.httpsOverHttp({
-              proxy: {
-                host: process.env.QUOTAGUARD_URL
-              }
-            })
+            'Content-Type': 'application/json',
           },
           
           http2: true,
@@ -85,7 +78,6 @@ module.exports = {
           headers: {
             'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.4 Safari/605.1.15',
             'Content-Type': 'application/json',
-            'Host': 'www.goat.com'
           },
           http2: true,
         });
