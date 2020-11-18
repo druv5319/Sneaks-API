@@ -1,0 +1,10 @@
+stages:
+- name: Build and Publish Image
+  steps:
+  - publishImageConfig:
+      dockerfilePath: ./Dockerfile
+      buildContext: .
+      tag: copyt/copyt-platform-sneaks-api:${CICD_GIT_BRANCH}
+      registry: 127.0.0.1:34571
+timeout: 60
+notification: {}
