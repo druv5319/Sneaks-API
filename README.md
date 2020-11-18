@@ -39,7 +39,7 @@ I built this API so sneaker heads and developers are able to create sneaker base
 
 UPDATE: As per many requests, I updated this API to version 1.1 which removes the caching database from the API so no need to download and have MongoDB running for the API. If youd like to use the database version of the API, it is now a depreciated [branch](https://github.com/druv5319/Sneaks-API/tree/API-with-database) to this repository.
 ## Demo
-### Sneaks App - [Link](https://sneaks-app.com)
+#### [Sneaks App](https://sneaks-app.com)
 ![Sneaks App Demo](https://github.com/druv5319/Sneaks-API/blob/master/Screenshots/demo.gif)
   
 
