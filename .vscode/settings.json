@@ -1,8 +1,0 @@
-{
-    "appService.zipIgnorePattern": [
-        "node_modules{,/**}",
-        ".vscode{,/**}"
-    ],
-    "appService.defaultWebAppToDeploy": "/subscriptions/c73d3ee8-9221-43de-81b1-880105dbb4e9/resourceGroups/sneaks/providers/Microsoft.Web/sites/Sneaks-api",
-    "appService.deploySubpath": "."
-}
