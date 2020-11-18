@@ -32,12 +32,15 @@ Sneaks API is a sneaker API built using Node.JS, Express, and Got. The Sneaks AP
   - Price map (of shoe size to price) from each of the resell sites
   - And more
   
-  ![Sneaks App Demo](https://github.com/druv5319/Sneaks-API/blob/master/Screenshots/demo.gif)
+  
   
 
 I built this API so sneaker heads and developers are able to create sneaker based programs, trackers and websites without having to fumble with scrapping information on all 4 resell websites. Feel free to fork, edit and submit a pull request for this API for any changes or improvements. If you have any questions or issues regarding this feel free to create an issue and I will try to answer them as soon as I can.
 
 UPDATE: As per many requests, I updated this API to version 1.1 which removes the caching database from the API so no need to download and have MongoDB running for the API. If youd like to use the database version of the API, it is now a depreciated [branch](https://github.com/druv5319/Sneaks-API/tree/API-with-database) to this repository.
+## Demo
+### Sneaks App - [Link](https://sneaks-app.com)
+![Sneaks App Demo](https://github.com/druv5319/Sneaks-API/blob/master/Screenshots/demo.gif)
   
 
 
