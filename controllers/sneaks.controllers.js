@@ -33,7 +33,7 @@ module.exports = class Sneaks {
       }
     });
   };*/
-  async getProducts(keyword, count, callback) {
+  async getProducts(keyword, count = 40, callback) {
 
     var productCounter = 0;
     stockXScraper.getProductsAndInfo(keyword, count, function (error, products) {
@@ -146,7 +146,7 @@ module.exports = class Sneaks {
 }
 
 
-var getProducts = function (keyword, count, callback) {
+var getProducts = function (keyword, count = 40, callback) {
   var productCounter = 0;
   stockXScraper.getProductsAndInfo(keyword, count, function (error, products) {
     if (error) {
