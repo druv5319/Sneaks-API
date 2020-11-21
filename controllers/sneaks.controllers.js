@@ -5,7 +5,7 @@ const goatScraper = require('../scrapers/goat-scraper');
 const stadiumGoodsScraper = require('../scrapers/stadiumgoods-scraper');
 
 module.exports = class Sneaks {
-  /* findOne (shoeID, callback) {
+    /* findOne (shoeID, callback) {
      Sneaker.findOne({
        styleID: shoeID
      }, function (err, shoe) {
@@ -33,10 +33,10 @@ module.exports = class Sneaks {
       }
     });
   };*/
-  async getProducts(keyword, callback) {
+  async getProducts(keyword, count = 40, callback) {
 
     var productCounter = 0;
-    stockXScraper.getProductsAndInfo(keyword, function (error, products) {
+    stockXScraper.getProductsAndInfo(keyword, count, function (error, products) {
       if (error) {
         callback(error, null)
       }
@@ -78,7 +78,7 @@ module.exports = class Sneaks {
 
   }
 
-  getProductPrices(shoeID, callback) {
+  getProductPrices(shoeID, count = 1, callback) {
     const getPrices = (shoe) => {
       var cbCounter = 0;
       stockXScraper.getPrices(shoe, function () {
@@ -115,7 +115,7 @@ module.exports = class Sneaks {
       });
     }
 
-    getProducts(shoeID, function (error, products) {
+    getProducts(shoeID, count, function (error, products) {
       if (error) {
         console.log(new Error("No Products Found"));
         callback(error, null);
@@ -134,8 +134,8 @@ module.exports = class Sneaks {
       });
   };*/
 
-  getMostPopular(callback) {
-    getProducts("", function (error, products) {
+  getMostPopular(count, callback) {
+    getProducts("", count, function (error, products) {
       if (error) {
         callback(error, null);
       } else {
@@ -146,9 +146,9 @@ module.exports = class Sneaks {
 }
 
 
-var getProducts = function (keyword, callback) {
+var getProducts = function (keyword, count = 40, callback) {
   var productCounter = 0;
-  stockXScraper.getProductsAndInfo(keyword, function (error, products) {
+  stockXScraper.getProductsAndInfo(keyword, count, function (error, products) {
     if (error) {
       callback(error, null)
     }

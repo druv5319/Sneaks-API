@@ -3,7 +3,7 @@ const Sneaker = require('../models/Sneaker');
 
 
 module.exports = {
-    getProductsAndInfo: async function (key, callback) {
+    getProductsAndInfo: async function (key, count, callback) {
       
         try {
             const response = await got.post('https://xw7sbct9v6-1.algolianet.com/1/indexes/products/query?x-algolia-agent=Algolia%20for%20vanilla%20JavaScript%203.32.1&x-algolia-application-id=XW7SBCT9V6&x-algolia-api-key=6bfb5abee4dcd8cea8f0ca1ca085c2b3', {
@@ -16,7 +16,7 @@ module.exports = {
                     "sec-fetch-mode": "cors",
                     "sec-fetch-site": "cross-site"
                 },
-                body: '{"params":"query=' + key + '&facets=*&filters=&hitsPerPage=40"}',
+                body: `{"params":"query=${key}&facets=*&filters=&hitsPerPage=${count}"}`,
                 http2: true
             });
            
