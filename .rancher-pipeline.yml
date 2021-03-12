@@ -7,4 +7,7 @@ stages:
       tag: copyt/copyt-platform-sneaks-api:${CICD_GIT_BRANCH}
       registry: 127.0.0.1:34571
 timeout: 60
+branch:
+  include:
+  - master
 notification: {}
