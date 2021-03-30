@@ -1,6 +1,6 @@
 {
   "name": "sneaks-api",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A RESTful API that collects and returns data on sneakers. This API will also find, compare and return a link of where to buy the sneaker based on the price.",
   "main": "index.js",
   "scripts": {
