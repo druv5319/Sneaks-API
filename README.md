@@ -17,8 +17,6 @@
 
 A StockX API, FlightClub API, Goat API, and Stadium Goods API all in one.
 
-Heres a [demo](https://druv5319.github.io/sneaks-app) of the [Sneaks App](https://github.com/druv5319/sneaks-app) using the API
-
 Sneaks API is a sneaker API built using Node.JS, Express, and Got. The Sneaks API allows users to get essential sneaker content such as images, product links and even prices from resell sites while also collecting data and storing it within a database. This API mainly scrapes StockX for sneaker information and then asynchronously scrapes Stadium Goods, Goat, and Flight Club for additional sneaker information such as images and its respective resell price. This API outputs a sneaker object of the following variables:
 
   - Sneaker Name
@@ -31,10 +29,16 @@ Sneaks API is a sneaker API built using Node.JS, Express, and Got. The Sneaks AP
   - Product links from each of the resell sites
   - Price map (of shoe size to price) from each of the resell sites
   - And more
+  
+  
+  
 
 I built this API so sneaker heads and developers are able to create sneaker based programs, trackers and websites without having to fumble with scrapping information on all 4 resell websites. Feel free to fork, edit and submit a pull request for this API for any changes or improvements. If you have any questions or issues regarding this feel free to create an issue and I will try to answer them as soon as I can.
 
 UPDATE: As per many requests, I updated this API to version 1.1 which removes the caching database from the API so no need to download and have MongoDB running for the API. If youd like to use the database version of the API, it is now a depreciated [branch](https://github.com/druv5319/Sneaks-API/tree/API-with-database) to this repository.
+## Demo
+### Sneaks App - [Website](https://sneaks-app.com) | [Github](https://github.com/druv5319/sneaks-app)
+<img src="https://github.com/druv5319/Sneaks-API/blob/master/Screenshots/demo.gif" width=600 >
   
 
 
