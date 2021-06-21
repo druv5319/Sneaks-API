@@ -78,7 +78,7 @@ module.exports = class Sneaks {
 
   }
 
-  getProductPrices(shoeID, count = 1, callback) {
+  getProductPrices(shoeID, callback) {
     const getPrices = (shoe) => {
       var cbCounter = 0;
       stockXScraper.getPrices(shoe, function () {
@@ -115,7 +115,7 @@ module.exports = class Sneaks {
       });
     }
 
-    getProducts(shoeID, count, function (error, products) {
+    getProducts(shoeID, 1, function (error, products) {
       if (error) {
         console.log(new Error("No Products Found"));
         callback(error, null);
