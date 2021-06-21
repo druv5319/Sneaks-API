@@ -67,8 +67,8 @@ const SneaksAPI = require('sneaks-api');
 const SneaksAPI = require('sneaks-api');
 const sneaks = new SneaksAPI();
 
-//getProducts(keyword, callback) takes in a keyword and returns an array of products
-sneaks.getProducts("Yeezy Cinder", function(err, products){
+//getProducts(keyword, limit, callback) takes in a keyword and returns an array of 10 products
+sneaks.getProducts("Yeezy Cinder", 10, function(err, products){
     console.log(products)
 })
 
