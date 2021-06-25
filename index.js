@@ -5,7 +5,7 @@ require('./routes/sneaks.routes.js')(app);
 require('dotenv').config();
 const SneaksAPI = require('./controllers/sneaks.controllers.js');
 
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 4000;
 mongoose.Promise = global.Promise;
 /*Sneaker.deleteMany({ }, function (err) {
   if(err) console.log(err);

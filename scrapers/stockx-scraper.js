@@ -59,7 +59,7 @@ module.exports = {
                 callback(null, products);
             }
         } catch (error) {
-            let err = new Error("Could not connect to StockX while searching '", shoe.styleID, "' Error: ", error)
+            let err = new Error("Could not connect to StockX while searching '", key, "' Error: ", error)
             console.log(err);
             callback(err, products)
         }
