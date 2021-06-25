@@ -20,7 +20,7 @@ module.exports = (app) => {
 
     //Grabs price maps from each site of a particular shoe
     app.get('/id/:id/prices', function(req, res){
-        sneaks.getProductPrices(req.params.id, function(error, products){
+        sneaks.getProductPrices(req.params.id.toUpperCase(), function(error, products){
             if (error) {
                 console.log(error)
                 res.send("Product Not Found");
