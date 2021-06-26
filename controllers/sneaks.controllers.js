@@ -116,7 +116,7 @@ module.exports = class Sneaks {
     }
 
     getProducts(shoeID, 1, function (error, products) {
-      if (error || products[0].styleID != shoeID) {
+      if (error || products[0].styleID.toLowerCase() != shoeID.toLowerCase()) {
         console.log(new Error("No Products Found"));
         callback(new Error("No Products Found"), null);
         return;
