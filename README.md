@@ -41,7 +41,7 @@ UPDATE: As per many requests, I updated this API to version 1.1 which removes th
 <img src="https://github.com/druv5319/Sneaks-API/blob/master/Screenshots/demo.gif" width=600 >
 
 ### Twilio Tutorial: Build a Sneaker Price Tracker with Twilio Programmable SMS - [Blog](https://www.twilio.com/blog/build-price-tracker-twilio-programmable-sms-node)
-  <img src="https://github.com/druv5319/Sneaks-API/blob/master/Screenshots/euCdtWvMESTjo9_Smd_wRpoNvhk6XOr3n3QlnHYNRAHHU.width-1000_RWrysBn-2.png" width="300"> <img src="https://github.com/druv5319/Sneaks-API/blob/master/Screenshots/euCdtWvMESTjo9_Smd_wRpoNvhk6XOr3n3QlnHYNRAHHU.width-1000_RWrysBn.png" width="300">
+  <img src="https://github.com/druv5319/Sneaks-API/blob/master/Screenshots/euCdtWvMESTjo9_Smd_wRpoNvhk6XOr3n3QlnHYNRAHHU.width-1000_RWrysBn-2.png" width="300"> <img src="https://github.com/druv5319/Sneaks-API/blob/master/Screenshots/syHg2FzA1dcFjpp6XlqNq_ZRNDXJPcdWCJzGhBcU2PPXv.width-1000_VZzgt9G.png" width="300">
 
 
 ## Technologies Used
