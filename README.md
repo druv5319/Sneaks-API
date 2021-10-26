@@ -39,6 +39,8 @@ UPDATE: As per many requests, I updated this API to version 1.1 which removes th
 ## Demo
 ### Sneaks App - [Website](https://sneaks-app.com) | [Github](https://github.com/druv5319/sneaks-app)
 <img src="https://github.com/druv5319/Sneaks-API/blob/master/Screenshots/demo.gif" width=600 >
+
+### Twilio Blog - [Build a Sneaker Price Tracker with Twilio Programmable SMS](https://www.twilio.com/blog/build-price-tracker-twilio-programmable-sms-node)
   
 
 
