@@ -55,8 +55,8 @@ I built this API so sneaker heads and developers are able to create sneaker base
 
   
 ## Installation
-To use this API you will need to have [node.js](https://nodejs.org/en/) installed and running.
-Once installed, use this line on the terminal within your project directory
+To use this API you will need to have [node.js](https://nodejs.org/en/) installed.
+Once installed, use this line on the terminal within your Node.js project directory
 ```
 npm install sneaks-api
 ```
