@@ -19,6 +19,8 @@ A StockX API, FlightClub API, Goat API, and Stadium Goods API all in one.
 
 Sneaks API is a sneaker API built using Node.JS, Express, and Got. The Sneaks API allows users to get essential sneaker content such as images, product links and even prices from resell sites while also collecting data and storing it within a database. This API mainly scrapes StockX for sneaker information and then asynchronously scrapes Stadium Goods, Goat, and Flight Club for additional sneaker information such as images and its respective resell price. This API outputs a sneaker object of the following variables:
 
+**UPDATE 1.2.3**: Updated and fixed the Goat API to reflect their API changes. Removed the web server (localhost:4000) the package creates.
+
   - Sneaker Name
   - Colorway
   - Description
@@ -64,7 +66,6 @@ and place this line at the top of your main file
 const SneaksAPI = require('sneaks-api');
 ```
 ## How to Use
-### Method #1: Using the SneaksAPI class
 ```js
 const SneaksAPI = require('sneaks-api');
 const sneaks = new SneaksAPI();
@@ -86,26 +87,4 @@ sneaks.getMostPopular(10, function(err, products){
 ```
 [Console log](https://github.com/druv5319/Sneaks-API/blob/master/Screenshots/exampleSearchScreenshot%231.png) of sneaks.getProducts("Yeezy Cinder", ...)           
 [Console log](https://github.com/druv5319/Sneaks-API/blob/master/Screenshots/exampleSearchScreenshot%232.png) of sneaks.getProductPrices("FY2903", ...)
-
-### Method #2: Using localhost:4000
-Once your program starts with the sneaks-api module imported, a server should start and listen on port 4000
-
-<b>Routes:</b>
-
-This route takes in a keyword and returns an array of products (getProducts(keyword))
-```
-GET localhost:4000/search/:keyword
-```
-
-
-This route takes in a style ID and returns sneaker info including a price map and more images of the product (getProductprices(styleID))
-```
-GET localhost:4000/id/:styleID/prices
-```
-
-
-This route returns an array of the current popular products curated by StockX (getMostPopular())
-```
-GET localhost:4000/home
-```
 
