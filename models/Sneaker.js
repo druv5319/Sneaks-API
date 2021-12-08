@@ -14,6 +14,7 @@ var SneakerSchema = new Schema({
     thumbnail: String,
     urlKey: String,
     make: String,
+    goatProductId: Number,
     colorway: String,
     resellLinks:{
         stockX: String,

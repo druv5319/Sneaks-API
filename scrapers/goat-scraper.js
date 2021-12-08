@@ -20,6 +20,7 @@ module.exports = {
           shoe.lowestResellPrice.goat = json.results[0].hits[0].lowest_price_cents_usd / 100;
         }
         shoe.resellLinks.goat = 'http://www.goat.com/sneakers/' + json.results[0].hits[0].slug;
+        shoe.goatProductId = json.results[0].hits[0].product_template_id;
       }
       callback();
     } catch (error) {
@@ -33,7 +34,7 @@ module.exports = {
     if (!shoe.resellLinks.goat) {
       callback()
     } else {
-      let apiLink = shoe.resellLinks.goat.replace('sneakers/', 'web-api/v1/product_variants?productTemplateId=');
+      let apiLink = `http://www.goat.com/web-api/v1/product_variants/buy_bar_data?productTemplateId=${shoe.goatProductId}`;
       let priceMap = {};
 
       try {
@@ -48,11 +49,11 @@ module.exports = {
         var json = JSON.parse(response.body);
         for (var i = 0; i < json.length; i++) {
           if(json[i].shoeCondition == 'used') continue;
-          if(priceMap[json[i].size]){
-            priceMap[json[i].size] = json[i].lowestPriceCents.amount / 100 < priceMap[json[i].size] ? json[i].lowestPriceCents.amount / 100 : priceMap[json[i].size];
+          if(priceMap[json[i].sizeOption.value]){
+            priceMap[json[i].sizeOption.value] = json[i].lowestPriceCents.amount / 100 < priceMap[json[i].sizeOption.value] ? json[i].lowestPriceCents.amount / 100 : priceMap[json[i].sizeOption.value];
           }
           else{
-            priceMap[json[i].size] = json[i].lowestPriceCents.amount / 100 ;
+            priceMap[json[i].sizeOption.value] = json[i].lowestPriceCents.amount / 100 ;
           }
 
           
