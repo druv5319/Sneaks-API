@@ -34,8 +34,16 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+<<<<<<< Updated upstream
     "got": "^11.6.0",
     "mongoose": "^5.10.3",
     "request": "^2.65.0"
+=======
+    "got": "^11.5.1",
+    "mongodb": "^3.4.0",
+    "mongoose": "^5.8.1",
+    "request": "^2.88.0",
+    "urix": "^0.1.0"
+>>>>>>> Stashed changes
   }
 }
