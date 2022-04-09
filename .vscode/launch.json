@@ -1,5 +1,6 @@
 {
     "configurations": [
+    
         {
             "type": "pwa-msedge",
             "name": "https://github.com/lydell/source-map-resolve",
