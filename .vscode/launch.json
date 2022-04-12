@@ -8,3 +8,4 @@
             "url": "https://github.com/lydell/source-map-resolve"
         }
     ]import {} from 'semver';
+import {} from 'mime';
