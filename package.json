@@ -1,26 +1,26 @@
 {
-  "name": "sneaks-api",
-  "version": "1.0.0",
-  "description": "<p align=\"center\">",
-  "main": "index.js",
-  "dependencies": {
-    "mime": "^1.6.0",
-    "semver": "^5.7.1",
-    "sneaks-api": "^1.2.3",
-    "sshpk": "^1.16.1",
-    "uuid": "^3.3.3"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/leegarollie/Sneaks-API.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/leegarollie/Sneaks-API/issues"
-  },
-  "homepage": "https://github.com/leegarollie/Sneaks-API#readme"
+    "name": "sneaks-api",
+    "version": "1.0.0",
+    "description": "<p align=\"center\">",
+    "main": "index.js",
+    "dependencies": {
+        "mime": "^1.6.0",
+        "semver": "^5.7.1",
+        "sneaks-api": "^1.2.3",
+        "sshpk": "^1.16.1",
+        "uuid": "^3.3.3"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/leegarollie/Sneaks-API.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/leegarollie/Sneaks-API/issues"
+    },
+    "homepage": "https://github.com/leegarollie/Sneaks-API#readme"
 }
