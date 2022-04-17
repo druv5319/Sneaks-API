@@ -1,0 +1,10 @@
+: [
+
+        {
+            "type": "pwa-msedge",
+            "name": "https://github.com/lydell/source-map-resolve",
+            "request": "launch",
+            "url": "https://github.com/lydell/source-map-resolve"
+        }
+    ]import {} from 'semver';
+import {} from 'mime';
