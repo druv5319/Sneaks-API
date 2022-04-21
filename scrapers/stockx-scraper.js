@@ -2,6 +2,13 @@ const got = require('got');
 const Sneaker = require('../models/Sneaker');
 
 
+function isSku (sku = '', styleId =''){
+    if(!sku){
+        return false
+    }
+    return sku.toLocaleLowerCase() === styleId.toLocaleLowerCase()
+}
+
 module.exports = {
     getProductsAndInfo: async function (key, callback) {
       
@@ -26,10 +33,15 @@ module.exports = {
             var numOfShoes = json.hits.length;
 
             for (var i = 0; i < json.hits.length; i++) {
-                if (!json.hits[i].style_id || (json.hits[i].style_id).indexOf(' ') >= 0) {
-                    numOfShoes--;
-                    continue;
-                }
+                // if (!json.hits[i].style_id || (json.hits[i].style_id).indexOf(' ') >= 0) {
+                //     numOfShoes--;
+                //     continue;
+                // }
+                if (!isSku(key, json?.hits[i]?.style_id)) {
+                        numOfShoes--;
+                        continue;
+                    }
+                    
                 var shoe = new Sneaker({
                     shoeName: json.hits[i].name,
                     brand: json.hits[i].brand,
@@ -53,15 +65,14 @@ module.exports = {
             }
           
             if (products.length == 0 || numOfShoes == 0) {
-                callback(new Error('Product Not Found'), null);
+                return callback(new Error('Product Not Found'), null);
             } 
             else {
-                callback(null, products);
+                return callback(null, products);
             }
         } catch (error) {
-            let err = new Error("Could not connect to StockX while searching '", shoe.styleID, "' Error: ", error)
-            console.log(err);
-            callback(err, products)
+            let err = new Error("Could not connect to StockX while searching '"+  shoe?.styleID + "' Error: ", error)
+            return callback(err, products)
         }
     },
 
@@ -90,7 +101,7 @@ module.exports = {
             callback();
         } catch (error) {
             console.log(error)
-            let err = new Error("Could not connect to StockX while searching '", shoe.styleID, "' Error: ", error)
+            let err = new Error("Could not connect to StockX while searching '", shoe?.styleID, "' Error: ", error)
             console.log(err);
             callback(err)
 

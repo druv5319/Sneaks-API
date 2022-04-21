@@ -150,7 +150,9 @@ var getProducts = function (keyword, callback) {
   var productCounter = 0;
   stockXScraper.getProductsAndInfo(keyword, function (error, products) {
     if (error) {
-      callback(error, null)
+      // this should return status code 404
+      // todo: status code to 404
+      return callback(error, null)
     }
     products.forEach(function (shoe) {
       var cbCounter = 0;
