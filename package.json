@@ -4,8 +4,9 @@
   "description": "A RESTful API that collects and returns data on sneakers. This API will also find, compare and return a link of where to buy the sneaker based on the price.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "test": "mocha ./**/__test__/*.test.js --timeout 5000 --parallel=true",
+    "start": "node index.js",
+    "start:development": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -36,8 +37,15 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "got": "^11.6.0",
+    "mockery": "^2.1.0",
     "mongoose": "^5.10.3",
     "request": "^2.88.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "sinon": "^13.0.2",
+    "nodemon": "^2.0.15",
+    "mocha": "^9.2.2",
+    "axios-mock-adapter": "^1.20.0",
+    "chai": "^4.3.6"
+  }
 }

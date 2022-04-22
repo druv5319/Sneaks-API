@@ -52,11 +52,11 @@ module.exports = {
             request.post(options,
                 function getPriceMap(error, response, data) {
                     if (error) {
-                        let err = new Error("Could not connect to Stadium Goods while searching '", shoe.styleID, "' Error: ", error)
+                        let err = new Error("Could not connect to Stadium Goods while searching '" + shoe?.styleID + "' Error: "+ error)
                         console.log(err);
                         callback(err)
                     } else if (response.statusCode != 200) {
-                        let err = new Error("Could not connect to Stadium Goods while searching '", shoe.styleID, "' -  Status Code: ", response.statusCode)
+                        let err = new Error("Could not connect to Stadium Goods while searching '"+ shoe?.styleID+ "' -  Status Code: "+ response.statusCode)
                         console.log(err);
                         callback(err)
                     } else {

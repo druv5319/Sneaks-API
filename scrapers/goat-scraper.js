@@ -23,7 +23,7 @@ module.exports = {
       }
       callback();
     } catch (error) {
-      let err = new Error("Could not connect to Goat while searching '" + shoe.styleID + "' Error: ", error)
+      let err = new Error("Could not connect to Goat while searching '" + shoe?.styleID + "' Error: "+ error)
       console.log(err);
       callback(err)
     }
@@ -61,7 +61,7 @@ module.exports = {
         callback()
       } catch (error) {
         console.log(error);
-        let err = new Error("Could not connect to Goat while searching '" + shoe.styleID + "' Error: ", error)
+        let err = new Error("Could not connect to Goat while searching '" + shoe?.styleID + "' Error: "+ error)
         console.log(err);
         callback(err)
       }
@@ -101,7 +101,7 @@ module.exports = {
         }
         callback(shoe);
       } catch (error) {
-        let err = new Error("Could not connect to Goat while grabbing pictures for '" + shoe.styleID + "' Error: ", error)
+        let err = new Error("Could not connect to Goat while grabbing pictures for '" + shoe?.styleID + "' Error: "+ error)
         console.log(err);
         callback(err)
       }
